@@ -7,6 +7,34 @@
     {
       "level": "ce2",
       "id": 2
+    },
+    {
+      "level": "cm2",
+      "id": 3
+    },
+    {
+      "level": "cp",
+      "id": 4
+    },
+    {
+      "level": "cp",
+      "id": 5
+    },
+    {
+      "level": "ce1",
+      "id": 6
+    },
+    {
+      "level": "cm2",
+      "id": 7
+    },
+    {
+      "level": "cm1",
+      "id": 8
+    },
+    {
+      "level": "ce2",
+      "id": 9
     }
   ]
 }

@@ -1,21 +1,17 @@
+import { ADD_CLASS_SUCCEEDED, LIST_CLASS_SUCCEEDED } from '../const';
+
 const classes = (state = [], action) => {
+  debugger;
   switch (action.type) {
-    case 'ADD_TODO':
-      return [
-        ...state,
-        {
-          id: action.id,
-          text: action.text,
-          completed: false
-        }
-      ];
-    case 'TOGGLE_TODO':
-      return state.map(todo =>
-        todo.id === action.id ? { ...todo, completed: !todo.completed } : todo
-      );
+    case ADD_CLASS_SUCCEEDED:
+      return [...state, action.data];
+    case LIST_CLASS_SUCCEEDED:
+      return [...state, ...action.data];
     default:
       return state;
   }
 };
 
 export default classes;
+
+export const getAllClasses = state => state.classes;
