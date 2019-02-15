@@ -5,14 +5,16 @@ import {
   LIST_CLASS_REQUESTED,
   ADD_STUDENT_REQUESTED,
   ADD_ENTITIES,
-  UPDATE_STUDENT_REQUESTED
+  UPDATE_STUDENT_REQUESTED,
+  UPDATE_CLASS_REQUESTED
 } from './const';
 import {
   api_postClass,
   api_listClass,
   api_addStudent,
   api_getClass,
-  api_updateStudent
+  api_updateStudent,
+  api_updateClass
 } from './api';
 import { normalize } from 'normalizr';
 import { classListSchema, classSchema } from './schema';
@@ -21,7 +23,7 @@ import { classListSchema, classSchema } from './schema';
 // Add a new class
 function* postClass(action) {
   try {
-    const data = yield call(api_postClass, action.level);
+    const data = yield call(api_postClass, action.data);
     yield put({
       type: ADD_CLASS_SUCCEEDED,
       data: normalize(data, classSchema).entities.class
@@ -33,6 +35,24 @@ function* postClass(action) {
 
 function* watchAddClass() {
   yield takeEvery(ADD_CLASS_REQUESTED, postClass);
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////
+// Update a class
+function* updateClass(action) {
+  try {
+    const data = yield call(api_updateClass, action.data);
+    yield put({
+      type: ADD_ENTITIES,
+      entities: normalize(data, classSchema).entities
+    });
+  } catch (e) {
+    // yield put({ type: 'USER_FETCH_FAILED', message: e.message });
+  }
+}
+
+function* watchUpdateClass() {
+  yield takeEvery(UPDATE_CLASS_REQUESTED, updateClass);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -98,6 +118,7 @@ export default function* rootSaga() {
     watchAddClass(),
     watchListClass(),
     watchAddStudent(),
-    watchUpdateStudent()
+    watchUpdateStudent(),
+    watchUpdateClass()
   ]);
 }

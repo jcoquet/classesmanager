@@ -1,8 +1,18 @@
-export const api_postClass = level => {
+export const api_postClass = data => {
   return fetch('http://localhost:3001/classes', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ level, id: 'a' + new Date().getTime() })
+    body: JSON.stringify({ ...data, id: 'a' + new Date().getTime() })
+  })
+    .then(response => response.json())
+    .then(json => json);
+};
+
+export const api_updateClass = data => {
+  return fetch(`http://localhost:3001/classes/${data.id}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
   })
     .then(response => response.json())
     .then(json => json);

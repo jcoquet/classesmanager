@@ -16,7 +16,7 @@ export default class ListClass extends React.Component {
           return (
             <li key={item.id}>
               <Link to={`/classes/${item.id}`}>
-                {item.id} {item.level}
+                {item.name} ({item.level})
               </Link>
             </li>
           );

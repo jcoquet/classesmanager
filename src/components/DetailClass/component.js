@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import ClassEditForm from '../ClassEditForm';
 
 export default class ListClass extends React.Component {
   componentDidMount() {
@@ -18,17 +19,20 @@ export default class ListClass extends React.Component {
     });
 
     return (
-      <ul>
-        {students.map(item => {
-          return (
-            <li key={item.id}>
-              <Link to={`/students/${item.id}`}>
-                {item.lastname} {item.firstname}
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
+      <div>
+        <ClassEditForm class={currentClass} />
+        <ul>
+          {students.map(item => {
+            return (
+              <li key={item.id}>
+                <Link to={`/students/${item.id}`}>
+                  {item.lastname} {item.firstname}
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
     );
   }
 }

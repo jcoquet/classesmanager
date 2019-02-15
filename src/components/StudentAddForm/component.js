@@ -31,7 +31,7 @@ export default class StudentAddForm extends React.Component {
               <option />
               {Object.values(this.props.classesList).map(item => (
                 <option key={item.id} value={item.id}>
-                  {item.id} {item.level}
+                  {item.name} ({item.level})
                 </option>
               ))}
             </Field>
