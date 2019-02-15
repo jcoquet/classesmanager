@@ -1,22 +1,26 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default class ListClass extends React.Component {
   componentDidMount() {
-    if (this.props.classesList.length < 1) {
+    if (Object.values(this.props.classesList).length < 1) {
       this.props.loadAllClasses();
     }
   }
 
   render() {
-    if (this.props.classesList.length < 1) return null;
-
+    if (Object.values(this.props.classesList).length < 1) return null;
     return (
       <ul>
-        {this.props.classesList.map(item => (
-          <li key={item.id}>
-            {item.id} {item.level}
-          </li>
-        ))}
+        {Object.values(this.props.classesList).map(item => {
+          return (
+            <li key={item.id}>
+              <Link to={`/classes/${item.id}`}>
+                {item.id} {item.level}
+              </Link>
+            </li>
+          );
+        })}
       </ul>
     );
   }

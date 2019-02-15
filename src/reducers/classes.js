@@ -1,12 +1,11 @@
-import { ADD_CLASS_SUCCEEDED, LIST_CLASS_SUCCEEDED } from '../const';
+import { ADD_CLASS_SUCCEEDED, ADD_ENTITIES } from '../const';
 
-const classes = (state = [], action) => {
-  debugger;
+const classes = (state = {}, action) => {
   switch (action.type) {
     case ADD_CLASS_SUCCEEDED:
-      return [...state, action.data];
-    case LIST_CLASS_SUCCEEDED:
-      return [...state, ...action.data];
+      return { ...state, ...action.data };
+    case ADD_ENTITIES:
+      return { ...state, ...action.entities.class };
     default:
       return state;
   }
