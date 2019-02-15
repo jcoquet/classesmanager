@@ -1,6 +1,8 @@
 // EditUserDialog.js
 import React from 'react';
 import { Formik, Field, Form } from 'formik';
+import { Button, Classes, HTMLSelect } from '@blueprintjs/core';
+import { DateInput } from '@blueprintjs/datetime';
 
 export default class StudentAddForm extends React.Component {
   componentDidMount() {
@@ -18,14 +20,33 @@ export default class StudentAddForm extends React.Component {
           this.props.addStudent(values);
         }}
         render={({ errors, status, touched, isSubmitting }) => (
-          <Form>
-            <Field type="text" name="firstname" />
-            <Field type="text" name="lastname" />
-            <Field type="date" name="birthdate" />
+          <Form autoComplete={false}>
+            <Field
+              type="text"
+              required
+              name="firstname"
+              className={Classes.INPUT}
+              placeholder="Prénom"
+            />
+            <Field
+              type="text"
+              required
+              name="lastname"
+              className={Classes.INPUT}
+              placeholder="Nom"
+            />
+            <Field
+              type="date"
+              required
+              name="birthdate"
+              component={DateInput}
+              formatDate={date => date.toLocaleString()}
+              parseDate={str => new Date(str)}
+            />
             <Field
               name="classId"
               required
-              component="select"
+              component={HTMLSelect}
               placeholder="Classe"
             >
               <option />
@@ -36,7 +57,7 @@ export default class StudentAddForm extends React.Component {
               ))}
             </Field>
             {status && status.msg && <div>{status.msg}</div>}
-            <button type="submit">Submit</button>
+            <Button type="submit">Valider</Button>
           </Form>
         )}
       />

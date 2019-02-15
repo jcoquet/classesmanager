@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './App.css';
 import Home from './components/Home.component';
 import DetailClass from './components/DetailClass';
 import StudentAddForm from './components/StudentAddForm';
