@@ -4,6 +4,7 @@ import Home from './components/Home.component';
 import DetailClass from './components/DetailClass';
 import StudentAddForm from './components/StudentAddForm';
 import { Route, BrowserRouter as Router, Switch, Link } from 'react-router-dom';
+import StudentEditForm from './components/StudentEditForm';
 
 const NoMatch = ({ location }) => (
   <div>
@@ -32,6 +33,7 @@ class App extends Component {
             <Route exact path="/" component={Home} />
             <Route exact path="/classes/:id" component={DetailClass} />
             <Route exact path="/students" component={StudentAddForm} />
+            <Route exact path="/students/:id" component={StudentEditForm} />
             <Route component={NoMatch} />
           </Switch>
         </div>

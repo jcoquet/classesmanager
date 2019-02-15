@@ -12,3 +12,5 @@ const students = (state = {}, action) => {
 };
 
 export default students;
+
+export const getAllStudents = state => state.students;

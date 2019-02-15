@@ -37,3 +37,15 @@ export const api_addStudent = data => {
     .then(response => response.json())
     .then(json => json);
 };
+
+export const api_updateStudent = data => {
+  const { id, ...student } = data;
+
+  return fetch(`http://localhost:3001/students/${id}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ ...student })
+  })
+    .then(response => response.json())
+    .then(json => json);
+};

@@ -14,3 +14,5 @@ const classes = (state = {}, action) => {
 export default classes;
 
 export const getAllClasses = state => state.classes;
+
+export const getClass = (state, id) => state.classes[id];

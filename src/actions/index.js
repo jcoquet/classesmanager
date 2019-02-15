@@ -1,7 +1,8 @@
 import {
   ADD_CLASS_REQUESTED,
   LIST_CLASS_REQUESTED,
-  ADD_STUDENT_REQUESTED
+  ADD_STUDENT_REQUESTED,
+  UPDATE_STUDENT_REQUESTED
 } from '../const';
 
 export const addClass = level => ({
@@ -15,5 +16,10 @@ export const loadAllClasses = () => ({
 
 export const addStudent = data => ({
   type: ADD_STUDENT_REQUESTED,
+  data
+});
+
+export const updateStudent = data => ({
+  type: UPDATE_STUDENT_REQUESTED,
   data
 });

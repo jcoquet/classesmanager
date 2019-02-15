@@ -1,15 +1,15 @@
 import Component from './component';
 import { connect } from 'react-redux';
+import { getAllClasses } from '../../reducers/classes';
+import { loadAllClasses, updateStudent } from '../../actions';
 import { getAllStudents } from '../../reducers/students';
-import { getClass } from '../../reducers/classes';
-import { loadAllClasses } from '../../actions';
 
-const mapStateToProps = (state, ownprops) => ({
-  currentClass: getClass(state, ownprops.match.params.id),
+const mapStateToProps = state => ({
+  classesList: getAllClasses(state),
   students: getAllStudents(state)
 });
 
 export default connect(
   mapStateToProps,
-  { loadAllClasses }
+  { loadAllClasses, updateStudent }
 )(Component);
